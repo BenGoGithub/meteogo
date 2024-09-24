@@ -3,20 +3,22 @@
     <h1>Liste des villes</h1>
     <div v-if="loading">Chargement en cours...</div>
     <div v-if="error" style="color: red;">{{ error }}</div>
-    <div v-for="city in cities" :key="city.id">
-      <CityWeather
-          :name="city.name"
-          :weather="city.weather"
-          :temperature="city.temperature"
-          :updatedAt="city.updatedAt"
-      />
+    <div class="cities-grid">
+      <div v-for="city in cities" :key="city.id" class="city-item">
+        <CityWeather
+            :name="city.name"
+            :weather="city.weather"
+            :temperature="city.temperature"
+            :updatedAt="city.updatedAt"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import CityWeather from './City.vue'
-
+import axios from 'axios';
 export default {
   name: 'CitiesList',
   components: {
@@ -60,21 +62,43 @@ export default {
     }
 }
 </script>
-
 <style scoped>
 h1 {
   text-align: center;
-  color: #FF885B; /* Une couleur verte agréable */
+  color: #FF885B;
 }
 
-.city-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.cities-list {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.city-list > div {
-  width: 100%; /* Prendre toute la largeur */
-  max-width: 400px; /* Limiter la largeur maximale */
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.city-item {
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .cities-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .cities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cities-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
