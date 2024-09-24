@@ -1,5 +1,5 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/CitiesList.vue'
 </script>
 
 <template>
@@ -10,5 +10,23 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px; /* Ajoute un espace entre l'image et le contenu suivant */
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
 </style>

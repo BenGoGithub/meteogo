@@ -31,5 +31,20 @@ export default {
   border-radius: 8px;
   padding: 20px;
   margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.weather-card:hover {
+  transform: scale(1.02);
+}
+
+h2 {
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  color: #555;
 }
 </style>
